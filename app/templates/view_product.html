@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                {% if product.image %}
+                <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 300px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title">{{ product.name }}</h2>
+                    <p class="card-text"><strong>Description :</strong></p>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>Prix :</strong> {{ product.price }} €</p>
+                    <p class="card-text"><strong>Stock :</strong> {{ product.stock }}</p>
+
+                    <a href="{{ url_for('main.home') }}" class="btn btn-secondary">Retour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
