@@ -1,17 +1,25 @@
-name: First Workflow  # Le nom du workflow (facultatif)
+name: Deploy to GitHub Pages
 
-on: 
-  push:  # Déclenche ce workflow à chaque "push"
+on:
+  push:
     branches:
-      - main  # Sur quelle branche ? Ici "main".
+      - main
 
 jobs:
-  say-hello:  # Nom de ce job spécifique (peut être personnalisé)
-    runs-on: ubuntu-latest  # Machine hôte utilisée pour exécuter le job
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Say Hello to the World  # Une étape qui affiche un message
-        run: echo "Hello World 👋 ! My first GitHub Action workflow is running."
+      - name: Build site
+        run: |
+          mkdir dist
+          echo "<html><body><h1>Mon site déployé 🚀</h1></body></html>" > dist/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
