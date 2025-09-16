@@ -6,6 +6,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), nullable=False, unique=True)
     email = db.Column(db.String(120), nullable=False, unique=True)
     password_hash = db.Column(db.String(128), nullable=False)
+    is_admin = db.Column(db.Boolean, default=False)  # Indique si l'utilisateur est un admin
 
     # Méthode pour définir un mot de passe sans hashage
     def set_password(self, password):

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Tableau de bord administrateur</h2>
+
+    <div class="text-end mb-3">
+        <a href="{{ url_for('main.add_product') }}" class="btn btn-primary">Ajouter un Produit</a>
+    </div>
+
+    {% if products %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom du Produit</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }} €</td>
+                <td>{{ product.stock }}</td>
+                <td>
+                    <a href="{{ url_for('main.edit_product', product_id=product.id) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    <form method="POST" action="{{ url_for('main.delete_product', product_id=product.id) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="text-center">Aucun produit disponible.</p>
+    {% endif %}
+</div>
+{% endblock %}
