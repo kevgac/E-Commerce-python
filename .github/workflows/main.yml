@@ -1,0 +1,17 @@
+name: First Workflow  # Le nom du workflow (facultatif)
+
+on: 
+  push:  # Déclenche ce workflow à chaque "push"
+    branches:
+      - main  # Sur quelle branche ? Ici "main".
+
+jobs:
+  say-hello:  # Nom de ce job spécifique (peut être personnalisé)
+    runs-on: ubuntu-latest  # Machine hôte utilisée pour exécuter le job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Say Hello to the World  # Une étape qui affiche un message
+        run: echo "Hello World 👋 ! My first GitHub Action workflow is running."
