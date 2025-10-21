@@ -1,18 +1,79 @@
+/* ============================
+   Global Styles
+============================ */
 body {
     background-color: #f9f9f9;
 }
 
+.height-body{
+    height: 100vh;
+}
+
+/* ============================
+  Product Card Styles
+============================ */
 .product-card {
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Animation sur hover */
     margin-bottom: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre */
 }
 
 .product-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Zoom léger au survol */
 }
 
 .card-img-top {
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0; /* Arrondi du haut de l'image */
+}
+
+/* ============================
+  Navbar Styles (Sobres)
+============================ */
+.navbar {
+    background-color: #333; /* Gris foncé pour un style sobre */
+    border-bottom: 2px solid #ccc; /* Ligne de séparation gris clair */
+    animation: fadeIn 0.5s ease-in-out; /* Animation au chargement */
+}
+
+.navbar-brand {
+    color: #f9f9f9 !important; /* Texte blanc élégant */
+    font-family: 'Poppins', sans-serif; /* Police moderne */
+}
+
+.nav-link {
+    color: #f9f9f9; /* Liens en blanc neutre */
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #ccc; /* Effet hover avec une teinte gris clair */
+    background-color: transparent; /* Pas de couleur de fond pour le hover */
+}
+
+/* ============================
+  Responsive Styles
+============================ */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem; /* Réduire la taille du titre */
+    }
+    .nav-link {
+        font-size: 0.9rem; /* Réduire la taille des liens */
+    }
+    .height-body{
+        height: 0% !important;
+    }
+}
+
+/* ============================
+  Animation Styles
+============================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Masqué */
+    }
+    to {
+        opacity: 1; /* Complètement visible */
+    }
 }

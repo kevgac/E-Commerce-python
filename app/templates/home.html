@@ -20,9 +20,6 @@
                     <form method="POST" action="{{ url_for('main.add_to_cart', product_id=product.id) }}">
                         <button type="submit" class="btn btn-success btn-sm">Ajouter au panier</button>
                     </form>
-                    <form method="POST" action="{{ url_for('main.delete_product', product_id=product.id) }}">
-                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                    </form>
                 </div>
             </div>
         </div>

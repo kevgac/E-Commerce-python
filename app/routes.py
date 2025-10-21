@@ -71,35 +71,6 @@ def logout():
     flash('Vous avez été déconnecté.', 'success')
     return redirect(url_for('main.login'))
 
-# Route pour créer un produit
-# @main.route('/add', methods=['GET', 'POST'])
-# @login_required  # Accessible uniquement si l'utilisateur est connecté
-# def add_product():
-#     if request.method == 'POST':
-#         name = request.form['name']
-#         description = request.form['description']
-#         price = float(request.form['price'])
-#         image = request.form['image']
-#         stock = int(request.form['stock'])
-
-#         # Ajouter le produit dans la base
-#         new_product = Product(name=name, description=description, price=price, image=image, stock=stock)
-#         db.session.add(new_product)
-#         db.session.commit()
-
-#         flash('Produit ajouté avec succès !', 'success')
-#         return redirect(url_for('main.home'))
-
-#     return render_template('add_product.html')
-
-# @main.route('/delete/<int:product_id>', methods=['POST'])
-# def delete_product(product_id):
-#     product = Product.query.get_or_404(product_id)
-#     db.session.delete(product)
-#     db.session.commit()
-#     flash('Produit supprimé avec succès !', 'success')
-#     return redirect(url_for('main.home'))
-
 
 @main.route('/product/<int:product_id>', methods=['GET'])
 def view_product(product_id):
@@ -165,8 +136,9 @@ def remove_from_cart(product_id):
 
     return redirect(url_for('main.view_cart'))
 
-
-@main.route('/admin')
+#####################################################################################
+# Route pour promouvoir un utilisateur en administrateur (à utiliser avec précaution)
+#####################################################################################
 
 @main.route('/make_admin/<int:user_id>', methods=['GET'])
 @login_required
@@ -183,6 +155,7 @@ def make_admin(user_id):
 
     return f"L'utilisateur {user.username} est maintenant un administrateur."
 
+@main.route('/admin')
 @login_required
 def admin_dashboard():
     # Vérifier si l'utilisateur connecté est admin
